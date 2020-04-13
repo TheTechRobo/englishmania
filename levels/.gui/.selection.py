@@ -1,29 +1,24 @@
-from Tkinter import *
-import Tkinter
-t = Tkinter
-
+from tkinter import *
+import tkinter as t
+from runpy import run_path as r
+from sys import exit
 selection = t.Tk()
 selection.title('Level Selection')
 
 def runOne():
-   execfile('.1.py')
-   selection.destroy()
+    r(path_name='.1.py')
+    selection.destroy()
 def runTwo():
-   execfile('.2.py')
-   selection.destroy()
+    selection.destroy()
+    r(path_name='.2.py')
 def exitAM():
 	exit()
 
-B1 = Button(selection, text="1", command=runOne)
-B2 = Button(selection, text="2", command=runTwo)
-Cancel = Button(selection, text="Cancel", command=exitAM)
+Button(selection, text="Level 1", command=runOne).pack()
+Button(selection, text="Level 2", command=runTwo).pack()
+Button(selection, text="Cancel", command=exitAM).pack()
 
-Label(selection, text = 'Select a Level ' ,
-    font = ('Arial' , 17), fg = 'black', width = 11, height = 2).pack()
-
-B1.pack()
-B2.pack()
-Cancel.pack()
+Label(selection, text = 'Select a Level ' , font=('Arial' , 17), fg='black', width=11, height=2).pack()
 
 
 selection.mainloop()
